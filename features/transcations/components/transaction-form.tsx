@@ -18,6 +18,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Select } from "@/components/select";
+import { ConvertAmountToMiliunits } from "@/lib/utils";
 
 const formschema = z.object({
   date: z.coerce.date(),
@@ -64,7 +65,14 @@ export const TransactionForm = ({
   });
 
   const handlesubmit = (values: FormValues) => {
-    console.log({ values });
+    const amount = parseFloat(values.amount);
+    const amountInMiliunits = ConvertAmountToMiliunits(amount);
+    console.log({ amountInMiliunits });
+
+    onSubmit({
+      ...values,
+      amount: amountInMiliunits,
+    });
   };
 
   const handledelete = () => {
@@ -147,6 +155,22 @@ export const TransactionForm = ({
           )}
         />
         <FormField
+          name="amount"
+          control={form.control}
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Amount</FormLabel>
+              <FormControl>
+                <AmountInput
+                  {...field}
+                  disabled={disabled}
+                  placeholder="0.00"
+                />
+              </FormControl>
+            </FormItem>
+          )}
+        />
+        <FormField
           name="notes"
           control={form.control}
           render={({ field }) => (
@@ -164,7 +188,7 @@ export const TransactionForm = ({
           )}
         />
         <Button className="w-full mt-4" disabled={disabled}>
-          {id ? "Save Changes" : "Create Account"}
+          {id ? "Save Changes" : "Create Transaction"}
         </Button>
 
         {!!id && (
@@ -176,7 +200,7 @@ export const TransactionForm = ({
             onClick={handledelete}
           >
             <Trash className="size-4 mr-2" />
-            Delete Account
+            Delete Transaction
           </Button>
         )}
       </form>

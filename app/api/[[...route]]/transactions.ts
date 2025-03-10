@@ -96,12 +96,10 @@ const app = new Hono()
         .select({
           id: transactions.id,
           date: transactions.date,
-          category: categories.name,
           categoryId: transactions.categoryId,
           payee: transactions.payee,
           amount: transactions.amount,
           notes: transactions.notes,
-          account: accounts.name,
           accountId: transactions.accountId,
         })
         .from(transactions)

@@ -34,10 +34,10 @@ export const NewTransactionSheet = () => {
 
   const categoryQuery = useGetCategories();
   const categoryMutation = useCreateCategroy();
-  const onCreateCategory = (name: string) =>
-    categoryMutation.mutate({
-      name,
-    });
+  const onCreateCategory = (name?: string) => {
+    if (!name?.trim()) return;
+    categoryMutation.mutate({ name: name.trim() });
+  };
   const categoryOptions = (categoryQuery.data ?? []).map((category) => ({
     label: category.name,
     value: category.id,
@@ -45,10 +45,11 @@ export const NewTransactionSheet = () => {
 
   const AccountQuery = usegetaccounts();
   const AccountMutation = useCreateAccount();
-  const onCreateAccount = (name: string) =>
-    AccountMutation.mutate({
-      name,
-    });
+  const onCreateAccount = (name?: string) => {
+    if (!name?.trim()) return;
+    AccountMutation.mutate({ name: name.trim() });
+  };
+
   const AccountOptions = (AccountQuery.data ?? []).map((account) => ({
     label: account.name,
     value: account.id,
