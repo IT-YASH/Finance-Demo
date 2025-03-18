@@ -8,26 +8,11 @@ import { Button } from "./ui/button";
 import { Menu } from "lucide-react";
 
 const routes = [
-  {
-    href: "/",
-    label: "Overview",
-  },
-  {
-    href: "/transactions",
-    label: "Transactions",
-  },
-  {
-    href: "/accounts",
-    label: "Accounts",
-  },
-  {
-    href: "/categories",
-    label: "Categories",
-  },
-  {
-    href: "/settings",
-    label: "Settings",
-  },
+  { href: "/", label: "Overview" },
+  { href: "/transactions", label: "Transactions" },
+  { href: "/accounts", label: "Accounts" },
+  { href: "/categories", label: "Categories" },
+  { href: "/settings", label: "Settings" },
 ];
 
 export const Navigation = () => {
@@ -45,22 +30,22 @@ export const Navigation = () => {
   if (isMobile) {
     return (
       <Sheet open={isOpen} onOpenChange={setIsOpen}>
-        <SheetTrigger>
+        <SheetTrigger asChild>
           <Button
-            variant={"outline"}
-            size={"sm"}
-            className="font-normal bg-white/10 hover:bg-white/20 hover:text-white border-none focus-visible:ring-offset-0 focus-visible:ring-transparent outline-none text-white focus:bg-white/30 transition"
+            variant="outline"
+            size="sm"
+            className="bg-white/10 hover:bg-white/20 text-white border-none focus:ring-0 outline-none transition"
           >
             <Menu className="size-4" />
           </Button>
         </SheetTrigger>
-        <SheetContent className="px-2" side={"left"}>
+        <SheetContent className="px-2" side="left">
           <nav className="flex flex-col gap-y-2 pt-6">
             {routes.map((route) => (
               <Button
-                key={route.href === pathname ? "secondary" : "ghost"}
+                key={route.href}
                 onClick={() => onClick(route.href)}
-                className="w-full justify-start"
+                variant={route.href === pathname ? "secondary" : "ghost"}
               >
                 {route.label}
               </Button>
