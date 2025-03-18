@@ -235,7 +235,7 @@ const app = new Hono()
         return c.json({ error: "Unathorized" }, 401);
       }
 
-      const transactionsToUpdate = db.$with("transations_to_update").as(
+      const transactionsToUpdate = db.$with("transactions_to_update").as(
         db
           .select({ id: transactions.id })
           .from(transactions)
@@ -247,7 +247,7 @@ const app = new Hono()
         .update(transactions)
         .set(values)
         .where(
-          inArray(transactions.id, sql`select id from ${transactionsToUpdate}`)
+          inArray(transactions.id, sql`(SELECT id FROM transactions_to_update)`)
         )
         .returning();
 

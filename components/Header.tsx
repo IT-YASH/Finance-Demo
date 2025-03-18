@@ -8,6 +8,7 @@ import { HeaderLogo } from "./header-logo";
 import { Navigation } from "./navigation";
 import { Loader2 } from "lucide-react";
 import { WelcomMsg } from "./welcome-msg";
+import { Filters } from "./filter";
 
 export const Header = () => {
   return (
@@ -27,7 +28,8 @@ export const Header = () => {
             <Loader2 className="size-8 animate-spin text-slate-400" />
           </ClerkLoading>
         </div>
-        <WelcomMsg/>
+        <WelcomMsg />
+        <Filters />
       </div>
     </header>
   );
