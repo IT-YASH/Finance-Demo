@@ -1,6 +1,6 @@
-# Finance SaaS Platform
+# TrackPaisa SaaS Platform
 
-This is a **Finance SaaS Platform** built with **Next.js 14**. It allows you to track your income and expenses, categorize transactions, and assign them to specific accounts. You can also import transactions using a CSV file and manage financial data efficiently.
+This is a **TrackPaisa SaaS Platform** built with **Next.js 14**. It allows you to track your income and expenses, categorize transactions, and assign them to specific accounts. You can also import transactions using a CSV file and manage financial data efficiently.
 
 ---
 
