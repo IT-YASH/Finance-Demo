@@ -29,3 +29,9 @@ This is a **Finance SaaS Platform** built with **Next.js 14**. It allows you to 
 - **Hono.js** – API development  
 - **Tanstack React Query** – State management  
 - **Clerk** – User authentication  
+
+---
+
+## **Preview**
+
+![Dashboard Preview](https://raw.githubusercontent.com/IT-YASH/Finance-Demo/main/public/dashboard-preview.png)
