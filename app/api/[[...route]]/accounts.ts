@@ -6,8 +6,7 @@ import { HTTPException } from "hono/http-exception";
 import { eq, and, inArray } from "drizzle-orm";
 import { zValidator } from "@hono/zod-validator";
 import { createId } from "@paralleldrive/cuid2";
-import { optional, z } from "zod";
-import middleware from "@/app/middleware";
+import { z } from "zod";
 
 const app = new Hono()
   .get("/", clerkMiddleware(), async (c) => {
