@@ -23,10 +23,10 @@ import { ConvertAmountToMiliunits } from "@/lib/utils";
 const formschema = z.object({
   date: z.coerce.date(),
   accountId: z.string(),
-  categoryId: z.string(),
+  categoryId: z.string().nullable().optional(),
   payee: z.string(),
   amount: z.string(),
-  notes: z.string(),
+  notes: z.string().nullable().optional(),
 });
 
 const apiSchema = insertTransactionSchema.omit({
@@ -143,17 +143,20 @@ export const TransactionForm = ({
           control={form.control}
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Payee</FormLabel>
+              <FormLabel htmlFor="payee">Payee</FormLabel>
               <FormControl>
                 <Input
+                  id="payee"
                   disabled={disabled}
                   placeholder="Add a Payee"
                   {...field}
+                  value={field.value ?? ""} // Ensures controlled input
                 />
               </FormControl>
             </FormItem>
           )}
         />
+
         <FormField
           name="amount"
           control={form.control}
